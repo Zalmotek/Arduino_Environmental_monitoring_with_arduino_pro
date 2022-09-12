@@ -1,0 +1,840 @@
+{
+ "meta": {
+  "version": "1",
+  "type": "dashboard",
+  "name": "Meeting Room Statistics-Template",
+  "description": "template created from dashboard: Meeting Room Statistics"
+ },
+ "content": {
+  "data": {
+   "type": "dashboard",
+   "attributes": {
+    "name": "Meeting Room Statistics",
+    "description": ""
+   },
+   "relationships": {
+    "label": {
+     "data": []
+    },
+    "cell": {
+     "data": [
+      {
+       "type": "cell",
+       "id": "09e7a34fe515f000"
+      },
+      {
+       "type": "cell",
+       "id": "09e7a3a13cd5f000"
+      },
+      {
+       "type": "cell",
+       "id": "09e7a3e28d15f000"
+      },
+      {
+       "type": "cell",
+       "id": "09e7a416eb95f000"
+      },
+      {
+       "type": "cell",
+       "id": "09e7a42bf355f000"
+      },
+      {
+       "type": "cell",
+       "id": "09e7b494ef95f000"
+      },
+      {
+       "type": "cell",
+       "id": "09e7bd1e3a95f000"
+      }
+     ]
+    },
+    "variable": {
+     "data": []
+    }
+   }
+  },
+  "included": [
+   {
+    "id": "09e7a34fe515f000",
+    "type": "cell",
+    "attributes": {
+     "x": 0,
+     "y": 0,
+     "w": 3,
+     "h": 6
+    },
+    "relationships": {
+     "view": {
+      "data": {
+       "type": "view",
+       "id": "09e7a34fe515f000"
+      }
+     }
+    }
+   },
+   {
+    "id": "09e7a3a13cd5f000",
+    "type": "cell",
+    "attributes": {
+     "x": 6,
+     "y": 0,
+     "w": 3,
+     "h": 6
+    },
+    "relationships": {
+     "view": {
+      "data": {
+       "type": "view",
+       "id": "09e7a3a13cd5f000"
+      }
+     }
+    }
+   },
+   {
+    "id": "09e7a3e28d15f000",
+    "type": "cell",
+    "attributes": {
+     "x": 3,
+     "y": 0,
+     "w": 3,
+     "h": 6
+    },
+    "relationships": {
+     "view": {
+      "data": {
+       "type": "view",
+       "id": "09e7a3e28d15f000"
+      }
+     }
+    }
+   },
+   {
+    "id": "09e7a416eb95f000",
+    "type": "cell",
+    "attributes": {
+     "x": 4,
+     "y": 6,
+     "w": 4,
+     "h": 6
+    },
+    "relationships": {
+     "view": {
+      "data": {
+       "type": "view",
+       "id": "09e7a416eb95f000"
+      }
+     }
+    }
+   },
+   {
+    "id": "09e7a42bf355f000",
+    "type": "cell",
+    "attributes": {
+     "x": 0,
+     "y": 6,
+     "w": 4,
+     "h": 6
+    },
+    "relationships": {
+     "view": {
+      "data": {
+       "type": "view",
+       "id": "09e7a42bf355f000"
+      }
+     }
+    }
+   },
+   {
+    "id": "09e7b494ef95f000",
+    "type": "cell",
+    "attributes": {
+     "x": 9,
+     "y": 0,
+     "w": 3,
+     "h": 6
+    },
+    "relationships": {
+     "view": {
+      "data": {
+       "type": "view",
+       "id": "09e7b494ef95f000"
+      }
+     }
+    }
+   },
+   {
+    "id": "09e7bd1e3a95f000",
+    "type": "cell",
+    "attributes": {
+     "x": 8,
+     "y": 6,
+     "w": 4,
+     "h": 6
+    },
+    "relationships": {
+     "view": {
+      "data": {
+       "type": "view",
+       "id": "09e7bd1e3a95f000"
+      }
+     }
+    }
+   },
+   {
+    "type": "view",
+    "id": "09e7a34fe515f000",
+    "attributes": {
+     "name": "👥 People Count",
+     "properties": {
+      "shape": "chronograf-v2",
+      "type": "histogram",
+      "queries": [
+       {
+        "text": "from(bucket: \"x8-iot\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"nicla_vision\")\n  |> filter(fn: (r) => r[\"_field\"] == \"people\")\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\n  |> yield(name: \"last\")",
+        "editMode": "advanced",
+        "name": "",
+        "builderConfig": {
+         "buckets": [],
+         "tags": [
+          {
+           "key": "_measurement",
+           "values": [],
+           "aggregateFunctionType": "filter"
+          }
+         ],
+         "functions": [
+          {
+           "name": "mean"
+          }
+         ],
+         "aggregateWindow": {
+          "period": "auto",
+          "fillValues": false
+         }
+        }
+       }
+      ],
+      "colors": [
+       {
+        "id": "b6d5354d-e1c3-4629-b570-6593edd068ce",
+        "type": "scale",
+        "hex": "#DEF154",
+        "name": "Solid Green",
+        "value": 0
+       },
+       {
+        "id": "b31d51de-fbb7-4a4c-9542-0ea63c8b1b0a",
+        "type": "scale",
+        "hex": "#DEF154",
+        "name": "Solid Green",
+        "value": 0
+       },
+       {
+        "id": "86e4ec20-f37b-4e16-a3c1-ab7d70ea5d58",
+        "type": "scale",
+        "hex": "#DEF154",
+        "name": "Solid Green",
+        "value": 0
+       }
+      ],
+      "xColumn": "_value",
+      "fillColumns": [
+       "_start",
+       "_stop",
+       "_field",
+       "_measurement"
+      ],
+      "xAxisLabel": "",
+      "position": "stacked",
+      "binCount": 30,
+      "note": "",
+      "showNoteWhenEmpty": false,
+      "legendColorizeRows": true,
+      "legendHide": false,
+      "legendOpacity": 1,
+      "legendOrientationThreshold": 100000000
+     }
+    }
+   },
+   {
+    "type": "view",
+    "id": "09e7a3a13cd5f000",
+    "attributes": {
+     "name": "💧 Humidity [%]",
+     "properties": {
+      "shape": "chronograf-v2",
+      "type": "gauge",
+      "queries": [
+       {
+        "text": "from(bucket: \"x8-iot\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"nicla_sense\")\n  |> filter(fn: (r) => r[\"_field\"] == \"humidity\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
+        "editMode": "advanced",
+        "name": "",
+        "builderConfig": {
+         "buckets": [],
+         "tags": [
+          {
+           "key": "_measurement",
+           "values": [],
+           "aggregateFunctionType": "filter"
+          }
+         ],
+         "functions": [
+          {
+           "name": "mean"
+          }
+         ],
+         "aggregateWindow": {
+          "period": "auto",
+          "fillValues": false
+         }
+        }
+       }
+      ],
+      "prefix": "",
+      "tickPrefix": "",
+      "suffix": "",
+      "tickSuffix": "",
+      "colors": [
+       {
+        "id": "0",
+        "type": "min",
+        "hex": "#545667",
+        "name": "graphite",
+        "value": 0
+       },
+       {
+        "id": "1",
+        "type": "max",
+        "hex": "#292933",
+        "name": "castle",
+        "value": 100
+       }
+      ],
+      "decimalPlaces": {
+       "isEnforced": true,
+       "digits": 2
+      },
+      "note": "",
+      "showNoteWhenEmpty": false
+     }
+    }
+   },
+   {
+    "type": "view",
+    "id": "09e7a3e28d15f000",
+    "attributes": {
+     "name": "⛅ Pressure [kPa]",
+     "properties": {
+      "shape": "chronograf-v2",
+      "queries": [
+       {
+        "text": "from(bucket: \"x8-iot\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"nicla_sense\")\n  |> filter(fn: (r) => r[\"_field\"] == \"pressure\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
+        "editMode": "advanced",
+        "name": "",
+        "builderConfig": {
+         "buckets": [],
+         "tags": [
+          {
+           "key": "_measurement",
+           "values": [],
+           "aggregateFunctionType": "filter"
+          }
+         ],
+         "functions": [
+          {
+           "name": "mean"
+          }
+         ],
+         "aggregateWindow": {
+          "period": "auto",
+          "fillValues": false
+         }
+        }
+       }
+      ],
+      "axes": {
+       "x": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       },
+       "y": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       }
+      },
+      "type": "xy",
+      "staticLegend": {
+       "colorizeRows": true,
+       "opacity": 1,
+       "orientationThreshold": 100000000,
+       "widthRatio": 1
+      },
+      "geom": "line",
+      "colors": [
+       {
+        "id": "b6d5354d-e1c3-4629-b570-6593edd068ce",
+        "type": "scale",
+        "hex": "#DEF154",
+        "name": "Solid Green",
+        "value": 0
+       },
+       {
+        "id": "b31d51de-fbb7-4a4c-9542-0ea63c8b1b0a",
+        "type": "scale",
+        "hex": "#DEF154",
+        "name": "Solid Green",
+        "value": 0
+       },
+       {
+        "id": "86e4ec20-f37b-4e16-a3c1-ab7d70ea5d58",
+        "type": "scale",
+        "hex": "#DEF154",
+        "name": "Solid Green",
+        "value": 0
+       }
+      ],
+      "note": "",
+      "showNoteWhenEmpty": false,
+      "xColumn": "_time",
+      "generateXAxisTicks": [],
+      "xTotalTicks": 0,
+      "xTickStart": 0,
+      "xTickStep": 0,
+      "yColumn": "_value",
+      "generateYAxisTicks": [],
+      "yTotalTicks": 0,
+      "yTickStart": 0,
+      "yTickStep": 0,
+      "shadeBelow": true,
+      "position": "overlaid",
+      "timeFormat": "",
+      "hoverDimension": "auto",
+      "legendColorizeRows": true,
+      "legendHide": false,
+      "legendOpacity": 1,
+      "legendOrientationThreshold": 100000000
+     }
+    }
+   },
+   {
+    "type": "view",
+    "id": "09e7a416eb95f000",
+    "attributes": {
+     "name": "🏢 Indoor Air Quality",
+     "properties": {
+      "shape": "chronograf-v2",
+      "type": "histogram",
+      "queries": [
+       {
+        "text": "from(bucket: \"x8-iot\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"nicla_sense\")\n  |> filter(fn: (r) => r[\"_field\"] == \"bsec\")\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\n  |> yield(name: \"last\")",
+        "editMode": "advanced",
+        "name": "",
+        "builderConfig": {
+         "buckets": [],
+         "tags": [
+          {
+           "key": "_measurement",
+           "values": [],
+           "aggregateFunctionType": "filter"
+          }
+         ],
+         "functions": [
+          {
+           "name": "mean"
+          }
+         ],
+         "aggregateWindow": {
+          "period": "auto",
+          "fillValues": false
+         }
+        }
+       }
+      ],
+      "colors": [
+       {
+        "id": "b6d5354d-e1c3-4629-b570-6593edd068ce",
+        "type": "scale",
+        "hex": "#DEF154",
+        "name": "Solid Green",
+        "value": 0
+       },
+       {
+        "id": "b31d51de-fbb7-4a4c-9542-0ea63c8b1b0a",
+        "type": "scale",
+        "hex": "#DEF154",
+        "name": "Solid Green",
+        "value": 0
+       },
+       {
+        "id": "86e4ec20-f37b-4e16-a3c1-ab7d70ea5d58",
+        "type": "scale",
+        "hex": "#DEF154",
+        "name": "Solid Green",
+        "value": 0
+       }
+      ],
+      "xColumn": "_time",
+      "fillColumns": [],
+      "xAxisLabel": "",
+      "position": "stacked",
+      "binCount": 30,
+      "note": "",
+      "showNoteWhenEmpty": false,
+      "legendColorizeRows": true,
+      "legendHide": false,
+      "legendOpacity": 1,
+      "legendOrientationThreshold": 100000000
+     }
+    }
+   },
+   {
+    "type": "view",
+    "id": "09e7a42bf355f000",
+    "attributes": {
+     "name": "🏭 CO₂ [ppm]",
+     "properties": {
+      "shape": "chronograf-v2",
+      "queries": [
+       {
+        "text": "from(bucket: \"x8-iot\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"nicla_sense\")\n  |> filter(fn: (r) => r[\"_field\"] == \"co2\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
+        "editMode": "advanced",
+        "name": "",
+        "builderConfig": {
+         "buckets": [],
+         "tags": [
+          {
+           "key": "_measurement",
+           "values": [],
+           "aggregateFunctionType": "filter"
+          }
+         ],
+         "functions": [
+          {
+           "name": "mean"
+          }
+         ],
+         "aggregateWindow": {
+          "period": "auto",
+          "fillValues": false
+         }
+        }
+       }
+      ],
+      "axes": {
+       "x": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       },
+       "y": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       }
+      },
+      "type": "xy",
+      "staticLegend": {
+       "colorizeRows": true,
+       "opacity": 1,
+       "orientationThreshold": 100000000,
+       "widthRatio": 1
+      },
+      "geom": "line",
+      "colors": [
+       {
+        "id": "0d935f19-b9de-4207-bdaa-ac3d2efed983",
+        "type": "scale",
+        "hex": "#DEF154",
+        "name": "Solid Green",
+        "value": 0
+       },
+       {
+        "id": "c39e3dce-ada3-46c8-814d-fa4e07fbcc19",
+        "type": "scale",
+        "hex": "#DEF154",
+        "name": "Solid Green",
+        "value": 0
+       },
+       {
+        "id": "ec2f8d60-c243-454e-afec-cd8dccf12914",
+        "type": "scale",
+        "hex": "#DEF154",
+        "name": "Solid Green",
+        "value": 0
+       }
+      ],
+      "note": "",
+      "showNoteWhenEmpty": false,
+      "xColumn": "_time",
+      "generateXAxisTicks": [],
+      "xTotalTicks": 0,
+      "xTickStart": 0,
+      "xTickStep": 0,
+      "yColumn": "_value",
+      "generateYAxisTicks": [],
+      "yTotalTicks": 0,
+      "yTickStart": 0,
+      "yTickStep": 0,
+      "shadeBelow": true,
+      "position": "overlaid",
+      "timeFormat": "",
+      "hoverDimension": "auto",
+      "legendColorizeRows": true,
+      "legendHide": false,
+      "legendOpacity": 1,
+      "legendOrientationThreshold": 100000000
+     }
+    }
+   },
+   {
+    "type": "view",
+    "id": "09e7b494ef95f000",
+    "attributes": {
+     "name": "🌡️ Temperature [°C] & Humidity [%]",
+     "properties": {
+      "shape": "chronograf-v2",
+      "queries": [
+       {
+        "text": "from(bucket: \"x8-iot\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"nicla_sense\")\n  |> filter(fn: (r) => r[\"_field\"] == \"temperature\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
+        "editMode": "advanced",
+        "name": "",
+        "builderConfig": {
+         "buckets": [],
+         "tags": [
+          {
+           "key": "_measurement",
+           "values": [],
+           "aggregateFunctionType": "filter"
+          }
+         ],
+         "functions": [
+          {
+           "name": "mean"
+          }
+         ],
+         "aggregateWindow": {
+          "period": "auto",
+          "fillValues": false
+         }
+        }
+       }
+      ],
+      "axes": {
+       "x": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       },
+       "y": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       }
+      },
+      "type": "xy",
+      "staticLegend": {
+       "colorizeRows": true,
+       "opacity": 1,
+       "orientationThreshold": 100000000,
+       "widthRatio": 1
+      },
+      "geom": "line",
+      "colors": [
+       {
+        "id": "b6d5354d-e1c3-4629-b570-6593edd068ce",
+        "type": "scale",
+        "hex": "#DEF154",
+        "name": "Solid Green",
+        "value": 0
+       },
+       {
+        "id": "b31d51de-fbb7-4a4c-9542-0ea63c8b1b0a",
+        "type": "scale",
+        "hex": "#DEF154",
+        "name": "Solid Green",
+        "value": 0
+       },
+       {
+        "id": "86e4ec20-f37b-4e16-a3c1-ab7d70ea5d58",
+        "type": "scale",
+        "hex": "#DEF154",
+        "name": "Solid Green",
+        "value": 0
+       }
+      ],
+      "note": "",
+      "showNoteWhenEmpty": false,
+      "xColumn": "_time",
+      "generateXAxisTicks": [],
+      "xTotalTicks": 0,
+      "xTickStart": 0,
+      "xTickStep": 0,
+      "yColumn": "_value",
+      "generateYAxisTicks": [],
+      "yTotalTicks": 0,
+      "yTickStart": 0,
+      "yTickStep": 0,
+      "shadeBelow": true,
+      "position": "overlaid",
+      "timeFormat": "",
+      "hoverDimension": "auto",
+      "legendColorizeRows": true,
+      "legendHide": false,
+      "legendOpacity": 1,
+      "legendOrientationThreshold": 100000000
+     }
+    }
+   },
+   {
+    "type": "view",
+    "id": "09e7bd1e3a95f000",
+    "attributes": {
+     "name": "💨 Gas",
+     "properties": {
+      "shape": "chronograf-v2",
+      "queries": [
+       {
+        "text": "from(bucket: \"x8-iot\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"nicla_sense\")\n  |> filter(fn: (r) => r[\"_field\"] == \"gas\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
+        "editMode": "advanced",
+        "name": "",
+        "builderConfig": {
+         "buckets": [],
+         "tags": [
+          {
+           "key": "_measurement",
+           "values": [],
+           "aggregateFunctionType": "filter"
+          }
+         ],
+         "functions": [
+          {
+           "name": "mean"
+          }
+         ],
+         "aggregateWindow": {
+          "period": "auto",
+          "fillValues": false
+         }
+        }
+       }
+      ],
+      "axes": {
+       "x": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       },
+       "y": {
+        "bounds": [
+         "",
+         ""
+        ],
+        "label": "",
+        "prefix": "",
+        "suffix": "",
+        "base": "10",
+        "scale": "linear"
+       }
+      },
+      "type": "xy",
+      "staticLegend": {
+       "colorizeRows": true,
+       "opacity": 1,
+       "orientationThreshold": 100000000,
+       "widthRatio": 1
+      },
+      "geom": "line",
+      "colors": [
+       {
+        "id": "b6d5354d-e1c3-4629-b570-6593edd068ce",
+        "type": "scale",
+        "hex": "#DEF154",
+        "name": "Solid Green",
+        "value": 0
+       },
+       {
+        "id": "b31d51de-fbb7-4a4c-9542-0ea63c8b1b0a",
+        "type": "scale",
+        "hex": "#DEF154",
+        "name": "Solid Green",
+        "value": 0
+       },
+       {
+        "id": "86e4ec20-f37b-4e16-a3c1-ab7d70ea5d58",
+        "type": "scale",
+        "hex": "#DEF154",
+        "name": "Solid Green",
+        "value": 0
+       }
+      ],
+      "note": "",
+      "showNoteWhenEmpty": false,
+      "xColumn": "_time",
+      "generateXAxisTicks": [],
+      "xTotalTicks": 0,
+      "xTickStart": 0,
+      "xTickStep": 0,
+      "yColumn": "_value",
+      "generateYAxisTicks": [],
+      "yTotalTicks": 0,
+      "yTickStart": 0,
+      "yTickStep": 0,
+      "shadeBelow": true,
+      "position": "overlaid",
+      "timeFormat": "",
+      "hoverDimension": "auto",
+      "legendColorizeRows": true,
+      "legendHide": false,
+      "legendOpacity": 1,
+      "legendOrientationThreshold": 100000000
+     }
+    }
+   }
+  ]
+ },
+ "labels": []
+}
