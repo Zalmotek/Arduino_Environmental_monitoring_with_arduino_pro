@@ -6,6 +6,8 @@ For monitoring the environmental conditions we have chosen the Arduino Nicla Sen
 
 For monitoring the number of people in each room we have chosen the Arduino Nicla Vision which combines a powerful STM32H747AII6 Dual ARM® Cortex® M7/M4 IC processor with a 2MP color camera that supports TinyML, as well as a smart 6-axis motion sensor, integrated microphone, and distance sensor.
 
+For the gateway we have chosen the Portenta X8 that is a powerful, industrial-grade SOM with Linux OS preloaded onboard, capable of running device-independent software thanks to its modular container architecture. It features an NXP® i.MX 8M Mini Cortex®-A53 quad-core, up to 1.8GHz per core + 1x Cortex®-M4 up to 400MHz, plus the STMicroelectronics STM32H747 dual-core Cortex®-M7 up to 480Mhz +M4 32 bit Arm® MCU up to 240Mhz.
+
 ![InfluxDB Dashboard with the collected data](dashboard.jpg)
 
 ## Getting Started
