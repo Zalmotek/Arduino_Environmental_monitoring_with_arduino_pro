@@ -1,0 +1,7 @@
+services:
+  blescanner:
+    image: manchoz/blescanner:latest
+    build: .
+    network_mode: host
+    cap_add:
+      - NET_ADMIN
