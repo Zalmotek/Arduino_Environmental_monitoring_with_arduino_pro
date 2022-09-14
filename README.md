@@ -27,6 +27,8 @@ Software requirements:
 - [Open MV](https://openmv.io/pages/download)
 - [Edge Impulse free account](https://studio.edgeimpulse.com/signup)
 
+Edge Impulse project link: https://studio.edgeimpulse.com/public/130101/latest
+
 ### Installing
 
 #### Nicla Sense ME:
