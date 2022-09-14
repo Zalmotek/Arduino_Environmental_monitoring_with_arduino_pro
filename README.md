@@ -10,6 +10,8 @@ For the gateway we have chosen the Portenta X8 that is a powerful, industrial-gr
 
 ![InfluxDB Dashboard with the collected data](dashboard.jpg)
 
+The dashboard can be visualized by accessing the InfluxDB interface on the Portenta X8 IP on port 8086 in a browser on another computer (for example http://192.168.1.199:8086/).
+
 ## Getting Started
 
 These instructions will give you a copy of the project up and running on your local machine for development and testing purposes. 
