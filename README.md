@@ -77,5 +77,5 @@ Edge Impulse project link: https://studio.edgeimpulse.com/public/130101/latest
    [Zalmotek team](https://zalmotek.com/)
 
 ## Acknowledgments
-  - The amazing Arduino Documentation and support!
+  - The amazing Arduino Documentation and the support of [manchoz](https://github.com/manchoz) !
 

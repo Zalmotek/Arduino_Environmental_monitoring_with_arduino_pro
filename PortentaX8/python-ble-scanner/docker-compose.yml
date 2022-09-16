@@ -9,7 +9,7 @@ networks:
   
 services:
   blescanner:
-    image: manchoz/blescanner:latest
+    image: zalmotek/blescanner:latest
     build: .
     network_mode: host
     cap_add:
