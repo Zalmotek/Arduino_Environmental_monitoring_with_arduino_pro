@@ -1,3 +1,4 @@
+
 # Environmental monitoring with Arduino Pro
 
 This project is a proof of concept for demonstrating environmental monitoring of offices by using the Arduino Pro Ecosystem.
@@ -34,21 +35,43 @@ Edge Impulse project link: https://studio.edgeimpulse.com/public/130101/latest
 ### Installing
 
 #### Nicla Sense ME:
-- install the Arduino IDE and the Nicla Sense ME board in it by following the steps in this [article](https://docs.arduino.cc/tutorials/nicla-sense-me/getting-started)
-- clone this repository and set the workspace path in the Nicla Sense ME folder
-- connect the board to your laptop, then compile and upload the ble_sense_send sketch
+- install the Arduino IDE and the Nicla Sense ME board in it by following the steps in this [article](https://docs.arduino.cc/tutorials/nicla-sense-me/getting-started) ;
+- clone this repository and set the workspace path in the Nicla Sense ME folder;
+- connect the board to your laptop, then compile and upload the ble_sense_send sketch;
 
 #### Nicla Vision:
-- install the OpenMV IDE
-- download the [latest firmware release](https://github.com/openmv/openmv/releases/tag/v4.3.3) for Nicla Vision (older releases do not have Bluetooth enabled)
-- connect the board to your laptop, go to Tools -> Run Bootloader (Load Firmware) -> select the Firmware Path -> Run
-- copy all the files from the Nicla Vision folder to your board
+- install the OpenMV IDE;
+- download the [latest firmware release](https://github.com/openmv/openmv/releases/tag/v4.3.3) for Nicla Vision (older releases do not have Bluetooth enabled);
+- connect the board to your laptop, go to Tools -> Run Bootloader (Load Firmware) -> select the Firmware Path -> Run ;
+- copy all the files from the Nicla Vision folder to your board;
 
 #### Portenta X8:
-- boot the Portenta X8 by connecting it to a laptop through a USB Type-C in it, so you get the network connectivity for first time setup of the WiFi
-- clone the [IoT trinity](https://github.com/arduino/portenta-containers/tree/release/iot-trinity) container that will provide us with the InfluxDB timeseries database
-- clone our modified container from this repo -> Portenta X8 folder and use SCP to transfer it on the Portenta (be sure to replace the BLE MACs to match your hardware)
-- start the IoT trinity container first then the python-ble-scanner secondly to capture the data from the BLE devices
+- boot the Portenta X8 by connecting it to a laptop through a USB Type-C in it, so you get the network connectivity for first time setup of the WiFi;
+- use the bluetoothctl command line utility to pair with the devices and find out their MACs using scan, be sure to copy their actual MACs from the scan since you will be using them later as well. Repeat for both Nicla Sense and Nicla Vision the following comands in the terminal:
+
+
+    bluetootctl
+    power on
+    scan on
+    pair MAC
+    connect MAC
+    trust MAC
+
+
+- clone this repository directly in the home of this device:
+
+    git clone https://github.com/Zalmotek/arduino_environmental_monitoring_with_arduino_pro.git
+    cd PortentaX8/python-ble-scanner
+    vim Docker-compose.yml
+
+- be sure to change the MAC ids for the Nicla Vision and Nicla Sense me accordingly with your devices found at the previouse step, then just build the container using docker-compose build and launch it with docker-compose up to start capturing data;
+
+
+    docker-compose build
+    docker-compose up
+
+- go to the ip of the PortentaX8 in a browser to check the data arriving in the InfluxDB interface, be sure to add 8086 port after the ip and the username arduino and password x8blepass45 to access it;
+- we have included the above dashboard template that you can import in the InfluxDB from the Boards button on the left side of the interface.
 
 ## Authors
    [Zalmotek team](https://zalmotek.com/)
