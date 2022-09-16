@@ -49,26 +49,29 @@ Edge Impulse project link: https://studio.edgeimpulse.com/public/130101/latest
 - boot the Portenta X8 by connecting it to a laptop through a USB Type-C in it, so you get the network connectivity for first time setup of the WiFi;
 - use the bluetoothctl command line utility to pair with the devices and find out their MACs using scan, be sure to copy their actual MACs from the scan since you will be using them later as well. Repeat for both Nicla Sense and Nicla Vision the following comands in the terminal:
 
-
+```
     bluetootctl
     power on
     scan on
     pair MAC
     connect MAC
     trust MAC
-
+```
 
 - clone this repository directly in the home of this device:
 
+```
     git clone https://github.com/Zalmotek/arduino_environmental_monitoring_with_arduino_pro.git
     cd PortentaX8/python-ble-scanner
     vim Docker-compose.yml
+```
 
 - be sure to change the MAC ids for the Nicla Vision and Nicla Sense me accordingly with your devices found at the previouse step, then just build the container using docker-compose build and launch it with docker-compose up to start capturing data;
 
-
+```
     docker-compose build
     docker-compose up
+```
 
 - go to the ip of the PortentaX8 in a browser to check the data arriving in the InfluxDB interface, be sure to add 8086 port after the ip and the username arduino and password x8blepass45 to access it;
 - we have included the above dashboard template that you can import in the InfluxDB from the Boards button on the left side of the interface.
