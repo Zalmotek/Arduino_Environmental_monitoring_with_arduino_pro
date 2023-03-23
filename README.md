@@ -22,6 +22,7 @@ These instructions will give you a copy of the project up and running on your lo
 Hardware requirements: 
 - [Nicla Sense Me](https://www.arduino.cc/pro/hardware/product/nicla-sense-me)
 - [Nicla Vision](https://www.arduino.cc/pro/hardware/product/nicla-vision)
+- [Nicla Vision 3D printed enclosure](https://www.myminifactory.com/object/3d-print-nicla-vision-enclosure-238325)
 - [Portenta X8](https://www.arduino.cc/pro/hardware/product/portenta-x8)
 
 
